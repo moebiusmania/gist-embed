@@ -1,6 +1,8 @@
 'use strict';
 
-const _getData = (user, uuid) => {
+import fetchJsonp from 'fetch-jsonp';
+
+const getData = (user, uuid) => {
   const url = `https://gist.github.com/${user}/${uuid}.json`;
   return fetchJsonp(url).then((res) => res.json())
     .then((data) => {
@@ -21,4 +23,4 @@ const _compEmbed = (loader, noMeta) => {
   return arr.join(' ');
 }
 
-export { _getData, _compLoader, _compEmbed }
+export { getData, _compLoader, _compEmbed }

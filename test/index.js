@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 
 import test from 'ava';
 import props from './../src/props';
-import { _getData, _compLoader, _compEmbed } from './../src/methods';
+import { getData, _compLoader, _compEmbed } from './../src/methods';
 
 const element = '<gist-embed>';
 
@@ -37,3 +37,10 @@ test(`${element} methods: _compEmbed`, t => {
   t.is( _compEmbed(null, true), 'show no-meta');
   t.is( _compEmbed(true, true), ' no-meta');
 });
+
+// test(`${element} methods: getData`, t => {
+//   getData('moebiusmania', 'b7b862eb8d316a92a576d7373b3b42e7')
+//     .then( data => {
+//       t.is( typeof data, 'object');
+//     });
+// });
