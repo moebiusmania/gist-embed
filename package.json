@@ -8,14 +8,15 @@
   "license": "MIT",
   "ava": {
     "require": [
-      "babel-register"
+      "babel-register",
+      "./test/helpers/browser"
     ],
     "babel": "inherit"
   },
   "scripts": {
-    "start": "concurrently -k \"http-server -s -p 8081\" \"webpack -w \" ",
+    "start": "concurrently -k \"http-server ./demo -s -p 8081\" \"webpack -w \" ",
     "build": "webpack",
-    "test": "ava ./test/index.js"
+    "test": "ava --timeout=30s ./test/index.js"
   },
   "dependencies": {
     "@polymer/polymer": "next",
@@ -27,6 +28,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
+    "browser-env": "^3.2.0",
     "concurrently": "^3.5.0",
     "gh-pages": "^1.0.0",
     "http-server": "^0.10.0",

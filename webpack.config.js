@@ -22,7 +22,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
     }),
     new WebpackNotifierPlugin({
-      title: 'Polymer v3',
+      title: '<gist-embed>',
       alwaysNotify: true
     })
   ],
@@ -33,7 +33,10 @@ module.exports = {
     },{
       test: /\.js?$/,
       exclude: ['node_modules', './dist/app.js'],
-      loader: 'babel-loader'
+      loader: 'babel-loader',
+      query: {
+        presets: []
+      }
     }]
   }
 }

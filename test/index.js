@@ -38,9 +38,15 @@ test(`${element} methods: _compEmbed`, t => {
   t.is( _compEmbed(true, true), ' no-meta');
 });
 
-// test(`${element} methods: getData`, t => {
-//   getData('moebiusmania', 'b7b862eb8d316a92a576d7373b3b42e7')
+// test(`${element} methods: getData`, async t => {
+//   const data = await getData('moebiusmania', 'b7b862eb8d316a92a576d7373b3b42e7')
 //     .then( data => {
-//       t.is( typeof data, 'object');
+//       return data;
 //     });
+
+//   t.is( typeof data, 'object');
+//   t.is( data.owner, 'moebiusmania');
+//   t.is( data.stylesheet, !undefined);
+//   t.is( typeof data.div, 'string');
+//   t.is( data.loading, false);
 // });

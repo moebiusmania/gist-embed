@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>&ltgist-embed&gt< demo</title>
+
+  <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-loader.js"></script>
+  <script>
+    window.addEventListener('WebComponentsReady', function(){
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "./app.js";
+      document.body.appendChild(script);
+    });
+  </script>
+</head>
+<body>
+
+  <h1>&ltgist-embed&gt</h1>
+  
+  <gist-embed
+    user="moebiusmania"
+    uuid="b7b862eb8d316a92a576d7373b3b42e7"
+  ><gist-embed>
+  
+</body>
+</html>
