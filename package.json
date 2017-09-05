@@ -16,7 +16,8 @@
   "scripts": {
     "start": "concurrently -k \"http-server ./demo -s -p 8081\" \"webpack -w \" ",
     "build": "webpack",
-    "test": "ava --timeout=30s ./test/index.js"
+    "test": "ava --timeout=30s ./test/index.js",
+    "deploy": "gh-pages -d demo"
   },
   "dependencies": {
     "@polymer/polymer": "next",
@@ -33,7 +34,7 @@
     "gh-pages": "^1.0.0",
     "http-server": "^0.10.0",
     "text-loader": "^0.0.1",
-    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5",
     "webpack-notifier": "^1.5.0"
   }

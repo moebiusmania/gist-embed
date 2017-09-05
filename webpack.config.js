@@ -16,7 +16,10 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     // new UglifyJSPlugin({
-    //   sourceMap: true
+    //   sourceMap: true,
+    //   uglifyOptions: {
+    //     ecma: 6
+    //   }
     // }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
@@ -30,13 +33,6 @@ module.exports = {
     rules: [{
       test: /\.html$/,
       use: 'text-loader'
-    },{
-      test: /\.js?$/,
-      exclude: ['node_modules', './dist/app.js'],
-      loader: 'babel-loader',
-      query: {
-        presets: []
-      }
     }]
   }
 }
