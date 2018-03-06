@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>&ltgist-embed&gt< demo</title>
+  <title>&ltgist-embed&gt demo</title>
   
-  <link rel="stylesheet" 
-    href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/chota">
+  <style>
+    .container{ text-align: center;}
+    .container h1{ font-size: 3em; }
+    .container p{ font-size: 1.3em; }
+    footer, hr{ margin: 40px 0;}
+  </style>
 
   <script>
     window.addEventListener('WebComponentsReady', function(){
       var script = document.createElement('script');
       script.async = true;
-      script.src = "./app.js";
+      script.src = "./demo.js";
       document.body.appendChild(script);
     });
   </script>
@@ -23,13 +28,29 @@
 
   <section class="container">
     <h1>&ltgist-embed&gt</h1>
-  
+    <p>A simple custom element to quickly embed gists on your webpage.</p>
+    
     <gist-embed
       user="moebiusmania"
-      uuid="b7b862eb8d316a92a576d7373b3b42e7"
-    ><gist-embed>
+      uuid="9e8697f91ee5b93cf684c44101559a9d"
+    ></gist-embed>
+
+    <p>How to use it? Well it's so simple that another gist will make the job 😎</p>
+
+    <gist-embed
+      user="moebiusmania"
+      uuid="4c7445f5db04f14d5e8161c7176eddb3"
+    ></gist-embed>
+
+    <p>That's all folks, Have fun!</p>
+
+    <hr>
+
+    <footer>
+      <p><small>A (very) small project brought to you by 
+          <a href="https://github.com/moebiusmania" target="_blank">Salvatore Laisa</a></small>.</p>
+    </footer>
   </section>
-  
   
 </body>
 </html>
