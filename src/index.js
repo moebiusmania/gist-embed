@@ -1,28 +1,26 @@
-'use strict';
 
-import { Element as PolymerElement } from '@polymer/polymer/polymer-element';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
-import { getData, _compLoader, _compEmbed } from './methods';
-import properties from './props';
-import template from './template.html';
+import getData from './libs';
 
-export class GistEmbed extends mixinBehaviors(
-  [{ _compLoader, _compEmbed }], PolymerElement) {
+export default class GistEmbed extends HTMLElement {
+  render(data) {
+    const height = this.getAttribute('height') || 50;
 
-  static get properties() { return properties }
-
-  static get template() { return template }
-
-  connectedCallback(){
-    super.connectedCallback();
-    
-    getData(this.user, this.uuid).then(data => {
-      this._css = data.stylesheet;
-      this._html = data.div;
-      this._loading = data.loading;
-    });
+    this.innerHTML = `
+      <link rel="stylesheet" href="${data.stylesheet}">
+      <div style="min-height: ${height}px">${data.div}</div>
+    `;
   }
 
+  init() {
+    const user = this.getAttribute('user') || '';
+    const uuid = this.getAttribute('uuid') || '';
+
+    getData(user, uuid).then(data => this.render(data));
+  }
+
+  connectedCallback() {
+    this.init();
+  }
 }
 
 customElements.define('gist-embed', GistEmbed);
