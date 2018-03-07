@@ -1,11 +1,15 @@
 # gist-embed
-Web component for easily embed a GitHub Gist in your webpages. Built on top of the Custom Elements v1 spec.
-
 [![Build Status](https://travis-ci.org/moebiusmania/gist-embed.svg?branch=master)](https://travis-ci.org/moebiusmania/gist-embed)
 
-### How to use
+Component for easily embed a GitHub Gist in your webpages/webapps. Built on top of the `Custom Elements` v1 spec and the `Gist REST API`.
 
-### Install & run project
+Works in both the browser or a Webpack powered project.
+
+### How to use [Browser]
+
+### How to use [Webpack]
+
+### Install & run project locally
 
 ### Tests
 

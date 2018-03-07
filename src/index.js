@@ -15,7 +15,8 @@ export default class GistEmbed extends HTMLElement {
     const user = this.getAttribute('user') || '';
     const uuid = this.getAttribute('uuid') || '';
 
-    getData(user, uuid).then(data => this.render(data));
+    getData(user, uuid)
+      .then(data => this.render(data));
   }
 
   connectedCallback() {
