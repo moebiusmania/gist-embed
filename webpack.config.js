@@ -1,13 +1,19 @@
+
 const path = require('path');
+
+const ENV = process.env.NODE_ENV || 'development';
+const buildPath = ENV === 'development' ?
+  path.join(__dirname, './demo') :
+  path.join(__dirname, './dist');
 
 module.exports = {
   entry: {
     demo: './src/index.js'
   },
-  mode: 'development',
+  mode: ENV,
   output: {
-    path: path.join(__dirname, './demo'),
-    filename: 'demo.js'
+    path: buildPath,
+    filename: 'gist_embed.js'
   },
   devtool: 'source-map',
   devServer: {

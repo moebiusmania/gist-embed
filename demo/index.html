@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>&ltgist-embed&gt demo</title>
   
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
   <link rel="stylesheet" href="https://unpkg.com/chota">
   <style>
     .container{ text-align: center;}
@@ -18,7 +19,7 @@
     window.addEventListener('WebComponentsReady', function(){
       var script = document.createElement('script');
       script.async = true;
-      script.src = "./demo.js";
+      script.src = "./gist_embed.js";
       document.body.appendChild(script);
     });
   </script>
@@ -41,6 +42,9 @@
       user="moebiusmania"
       uuid="4c7445f5db04f14d5e8161c7176eddb3"
     ></gist-embed>
+
+    <p>You can find some more info on the 
+      <a href="https://github.com/moebiusmania/gist-embed">project's repository</a>.</p>
 
     <p>That's all folks, Have fun!</p>
 

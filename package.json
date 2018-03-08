@@ -7,11 +7,12 @@
   "author": "Salvatore Laisa <moebiusmania@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "webpack",
+    "start": "NODE_ENV=development webpack-dev-server --hot",
+    "build": "NODE_ENV=production webpack",
+    "build:dev": "NODE_ENV=development webpack",
     "pretest": "xo ./src ./test",
     "test": "ava ./test/index.js --verbose",
-    "deploy": "gh-pages -d demo"
+    "deploy": "npm run build:dev && gh-pages -d demo"
   },
   "dependencies": {
     "fetch-jsonp": "1.1.3"
