@@ -5,11 +5,30 @@ Component for easily embed a GitHub Gist in your webpages/webapps. Built on top 
 
 Works in both the browser or a Webpack powered project.
 
+### Install
+It's **not** available yet on NPM... just wait a few days!
+```
+$ npm install gist-embed
+--- or --
+$ yarn add gist-embed
+```
+
 ### How to use [Browser]
+```html
+<!-- You may want to load the Custom Elements polyfill before -->
+<script src="./node_modules/gist-embed/dist/gist-embed.js"></script>
+```
 
 ### How to use [Webpack]
+```javascript
+// Full script (class + customElements.define)
+import 'gist-embed';
 
-### Install & run project locally
+// Class only, if you don't want to execute customElements.define immediately
+import GistEmbed from 'gist-embed/src/class';
+```
+
+### Run project locally
 
 ### Tests
 
