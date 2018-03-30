@@ -4,7 +4,11 @@ const defaultOptions = {
   jsonpCallbackFunction: null
 };
 
-const generateCallbackFunction = () => `jsonp_${Date.now()}_${Math.ceil(Math.random() * 100000)}`;
+const getRandom = () => Math.ceil(Math.random() * 100000);
+
+const createCallback = () => `jsonp_${Date.now()}_${getRandom()}`;
+
+const maybeClearTimeout = id => id ? clearTimeout(id) : null;
 
 const clearFunction = functionName => {
   try {
@@ -14,41 +18,40 @@ const clearFunction = functionName => {
   }
 };
 
-const removeScript = scriptId => {
-  const script = document.getElementById(scriptId);
+const removeScript = id => {
+  console.log(id);
+  const script = document.getElementById(id);
   if (script) {
     document.getElementsByTagName('head')[0].removeChild(script);
   }
 };
 
-function fetchJsonp(_url, options = {}) {
-  // to avoid param reassign
-  let url = _url;
+const fetchJsonp = (_url, options = {}) => {
   const timeout = options.timeout || defaultOptions.timeout;
   const jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
 
   let timeoutId;
 
   return new Promise((resolve, reject) => {
-    const callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+    const callbackFunction = options.jsonpCallbackFunction || createCallback();
     const scriptId = `${jsonpCallback}_${callbackFunction}`;
 
-    window[callbackFunction] = (response) => {
+    window[callbackFunction] = response => {
       resolve({
         ok: true,
-        // keep consistent with fetch API
-        json: () => Promise.resolve(response),
+        // Keep consistent with fetch API
+        json: () => Promise.resolve(response)
       });
 
-      if (timeoutId) clearTimeout(timeoutId);
+      maybeClearTimeout(timeoutId);
 
       removeScript(scriptId);
-
       clearFunction(callbackFunction);
     };
 
     // Check if the user set their own params, and if not add a ? to start a list of params
-    url += (url.indexOf('?') === -1) ? '?' : '&';
+    const params = (_url.indexOf('?') === -1) ? '?' : '&';
+    const url = _url + params;
 
     const jsonpScript = document.createElement('script');
     jsonpScript.setAttribute('src', `${url}${jsonpCallback}=${callbackFunction}`);
@@ -63,22 +66,18 @@ function fetchJsonp(_url, options = {}) {
 
       clearFunction(callbackFunction);
       removeScript(scriptId);
-      window[callbackFunction] = () => {
-        clearFunction(callbackFunction);
-      };
+      window[callbackFunction] = () => clearFunction(callbackFunction);
     }, timeout);
 
     // Caught if got 404/500
-    jsonpScript.onerror = () => {
+    jsonpScript.addEventListener('error', () => {
       reject(new Error(`JSONP request to ${_url} failed`));
 
       clearFunction(callbackFunction);
       removeScript(scriptId);
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
-    };
+      maybeClearTimeout(timeoutId);
+    });
   });
-}
+};
 
 export default fetchJsonp;
