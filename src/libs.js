@@ -1,5 +1,5 @@
 
-import jsonp from './fetchjsonp';
+import jsonp from './jsonp';
 
 const extend = (obj, params) => Object.assign({}, obj, params);
 
