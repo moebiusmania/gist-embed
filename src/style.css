@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+}
+.container h1 {
+  font-size: 3em;
+}
+.container p {
+  font-size: 1.3em;
+}
+footer,
+hr {
+  margin: 40px 0;
+}
