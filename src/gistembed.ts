@@ -1,4 +1,4 @@
-import getData from "./libs/get";
+import fetchJsonp from "fetch-jsonp";
 
 export default class GistEmbed extends HTMLElement {
   render(data: any) {
@@ -11,15 +11,19 @@ export default class GistEmbed extends HTMLElement {
     `;
   }
 
-  init() {
-    const user: string = this.getAttribute("user") || "";
-    const uuid: string = this.getAttribute("uuid") || "";
+  getData(user: string, uuid: string) {
+    const url: string = `https://gist.github.com/${user}/${uuid}.json`;
 
-    getData(user, uuid).then((data) => this.render(data));
+    return fetchJsonp(url)
+      .then((res) => res.json())
+      .then((data: any) => this.render(data));
   }
 
   connectedCallback() {
-    this.init();
+    const user: string = this.getAttribute("user") || "";
+    const uuid: string = this.getAttribute("uuid") || "";
+
+    this.getData(user, uuid);
   }
 }
 
