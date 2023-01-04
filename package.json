@@ -8,8 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:demo": "tsc && vite build --mode demo",
+    "build": "tsc && vite build --config vite.lib.config.js",
+    "build:demo": "tsc && vite build",
     "prebuild": "npm run build:demo",
     "preview": "vite preview",
     "test": "web-test-runner \"**/*.test.js\" --node-resolve --puppeteer"
