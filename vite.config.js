@@ -15,7 +15,9 @@ if (process.env.NODE_ENV === "production") {
 
 if (process.env.NODE_ENV !== "production") {
   module.exports = defineConfig({
-    base: "/gist-embed/",
+    server: {
+      port: 3000,
+    },
     build: {
       outDir: "demo",
     },
